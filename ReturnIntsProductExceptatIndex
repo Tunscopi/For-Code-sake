@@ -1,0 +1,88 @@
+#include <iostream>
+#include <string>
+
+int* AllIntsExceptIndex(int*, int);
+int* AllIntsExceptIndex2(int*, int);
+int* AllIntsExceptIndex3(int*, int);
+
+int submain()
+{
+	int num_array[] = {2,9,1,4};
+	int size = sizeof(num_array) / sizeof(*num_array);
+	// Part A
+		// Approach 1: O(n2) 
+	int *r;
+	r = AllIntsExceptIndex(num_array, size);
+	// Print results
+	for (int i = 0; i < size; i++)
+		std::cout << *(r + i) << " ";
+	std::cout << "\n";
+
+		// Approach 2: O(n) Better Method
+	int *p;
+	p = AllIntsExceptIndex2(num_array, size);
+	
+	// Print results
+	for (int i = 0; i < size; i++)
+		std::cout << *(p + i) << " ";
+	std::cout << "\n";
+
+	// Part B: Use division to achieve same results
+		// Approach 1: O(n2)
+	int *q;
+	q = AllIntsExceptIndex3(num_array, size);
+	
+	for (int i = 0; i < size; i++)
+		std::cout << *(q + i) << " ";
+		// Approach 2: O(n)
+
+	std::cin.get();
+	return 0;
+}
+
+int* AllIntsExceptIndex3(int* num, int size)
+{
+	static int Ret_Array[4];
+	for (int i = 0; i < size; i++)
+	{
+		Ret_Array[i] = 1;
+		for (int j = 0; j < size; j++)
+			Ret_Array[i] *= num[j];
+		Ret_Array[i] = Ret_Array[i] / num[i];
+	}
+
+	return Ret_Array;
+}
+
+int* AllIntsExceptIndex2(int* num, int size)
+{
+	static int New_Array[4]; int lastProd = 1;
+	// Keep track of all products before desired index
+	for (int i = 0; i < size; i++){
+		New_Array[i] = lastProd; lastProd *= num[i];
+	}lastProd = 1;
+
+	// Multiply by all products after desired index
+	for (int i = size-1; i >= 0; i--){
+		New_Array[i] *= lastProd; lastProd *= num[i];
+	}
+
+	return New_Array;
+}
+
+
+int* AllIntsExceptIndex(int* num, int size)
+{
+	static int ret_Array[4];
+		int mult = 1;
+
+	for (int i = 0; i < size; i++)
+	{
+		ret_Array[i] = 1; // initialize ret_Array
+
+		// ignore current index, perform multiplication
+		for (int j = 0; j < size; j++)
+		if (j != i) ret_Array[i] = ret_Array[i] * num[j];
+	}
+	return ret_Array;
+}
