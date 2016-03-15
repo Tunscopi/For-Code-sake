@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+
+// Prototype def.
+int get_greatest_diff(int num[]);
+
+int submain()
+{
+	// Declare array
+	int num_array[5] {20,8,6,10,6};
+
+	// Best method, use O(n)
+	std::cout << get_greatest_diff(num_array) << std::endl;
+	
+	// Or, O(n*log2(n))use sort method!
+	std::sort(num_array, num_array+sizeof(num_array)/sizeof(*num_array));
+	std::cout << num_array[4] - num_array[0];
+
+	std::cin.get();
+	return 0;
+}
+
+int get_greatest_diff(int num[])
+{
+	int curr_largest, curr_least;
+	curr_largest = curr_least = num[0];
+	for (int i = 0; i < 3; i++)
+	{
+		if (curr_largest < num[i+1]) curr_largest = num[i+1];
+		if (curr_least > num[i+1]) curr_least = num[i+1];
+	}
+
+	return curr_largest - curr_least;
+
+}
