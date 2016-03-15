@@ -24,7 +24,7 @@ class solution{
 		case 2:  // Go left!
 			if (col_index == level){
 				row_index--; dir++;
-			}
+			} 
 			else col_index--;
 			break;
 		case 3: // Go up!
