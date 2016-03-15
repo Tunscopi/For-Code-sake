@@ -1,0 +1,41 @@
+class solution{
+	vector<int> spiralOrder(const vector<vector<int> > &matrix) {
+	vector <int> results;
+	int no_rows = matrix.size(), no_cols = matrix[0].size();
+	int left_index = 0, bottom_index = 0, col_index = 0, row_index = 0, level = 0, dir = 0;
+	if (rows == 0) return results;
+	vector.push_back(matrix[0][0]); // Priming read
+	
+	for (int i = 1; i < no_rows*no_cols; i++)
+	{
+		switch(dir){
+		case 0: // Go right!
+			if(col_index == no_cols-level-1){
+				row_index++; dir++;
+			}
+			else col_index++; // Keep going right
+			break;
+		case 1:  // Go down!
+			if (row_index == no_rows-level-1){
+				col_index--; dir++;
+			}
+			else row_index++;
+			break;
+		case 2:  // Go left!
+			if (col_index == level){
+				row_index--; dir++;
+			}
+			else col_index--;
+			break;
+		case 3: // Go up!
+			if (row_index == level + 1){
+				col_index++; dir = 0;
+				level++;
+			}
+			else row_index--;
+			break;
+		}
+	}
+	vector.push_back(matrix[row_index][col_index]);
+	}
+};
