@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+int get_max_profit(int*, int);
+int get_max_profit2(int*, int);
+
+int main()
+{
+	int stock_prices[] = { 10, 7, 5, 8, 11, 9 };
+
+	// Method 1: O(n2)
+	cout << get_max_profit(stock_prices, sizeof(stock_prices)/sizeof(*stock_prices)) << "\n";
+	
+	// Method 2: O(n) 
+	cout << get_max_profit2(stock_prices, sizeof(stock_prices) / sizeof(*stock_prices));
+
+	cin.get();
+	return 0;
+}
+
+int get_max_profit2(int prices[6], int size)
+{
+	int max_profit = prices[1] - prices[0], curr_max = prices[0], curr_least = prices[0];
+	int least_index = 0, max_index = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		// Keep track of current least and max values
+		if (curr_least > prices[i]) curr_least = prices[i], least_index = i;
+		if (curr_max < prices[i]) curr_max = prices[i], max_index = i;
+
+		if (max_index > least_index) max_profit = curr_max - curr_least;
+	}
+	return max_profit;
+}
+
+int get_max_profit(int prices[6], int size){
+
+	int max_profit, curr_profit;
+	max_profit = curr_profit = prices[1] - prices[0];
+
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i; j < size; j++)
+		{
+			curr_profit = prices[j + 1] - prices[i];
+			if (max_profit < curr_profit) max_profit = curr_profit;
+		}
+	}
+	return max_profit;
+}
