@@ -1,0 +1,74 @@
+#include <iostream>
+#include <vector>
+#include "limits.h"
+
+using namespace std;
+
+class Solution {
+public:
+	Solution::Solution(); // Constructor
+	vector<int> A;
+	vector<int> Solution::maxset() {
+		unsigned long long max_sum = 0; 
+		int max_items = 0, max_stInd = 0, max_endInd = 0;
+		unsigned long long temp_sum = 0;
+		int temp_stIndex = 0, temp_endIndex = 0, temp_items = 0;
+		bool isReset = 1, isAllNegative = 1, isLast = 0;
+		vector<int> Result; vector<int>::iterator vec_start; vec_start = Result.begin();
+		for (int i = 0; i < A.size(); i++)
+		{
+			if (A[i] >= 0) {
+				temp_sum += A[i];   isAllNegative = 0; // Keep Summing 
+				if (isReset){
+					temp_stIndex = i; isReset = 0;
+				}
+				if (i == A.size() - 1) { isLast = 1;  goto here; }
+			}
+
+			else{
+			here:
+				if (!isAllNegative){
+					temp_endIndex = i; //if (temp_stIndex != 0) temp_items++;
+					temp_items = temp_endIndex - temp_stIndex; if (isLast) temp_items++;
+					if (temp_sum > max_sum) {
+						max_sum = temp_sum; max_items = temp_items; max_stInd = temp_stIndex; max_endInd = temp_endIndex;
+					}
+					else if (temp_sum == max_sum)   { // Tie 
+						if (temp_items > max_items)
+						{
+							max_sum = temp_sum;
+							max_items = temp_items; max_stInd = temp_stIndex; max_endInd = temp_endIndex;
+						}
+					}
+					temp_sum = 0; temp_items = 0; isReset = 1; temp_endIndex = 0; temp_stIndex = 0; temp_items = 0;
+				}
+			}
+		}
+		int i = 0;
+		while (i <= max_items-1){
+			Result.push_back(A[max_stInd + i]); i++; 
+	};
+		return Result;
+	}
+};
+
+Solution::Solution()
+{
+	//int Arr[] {-846930886, -1714636915, 424238335, -1649760492};
+	//int Arr[] {1,2,5,-7,2,5};
+	//int Arr[] {-1, -1, -1, -1, -1};
+	//int Arr[] {756898537, -1973594324, -2038664370, -184803526, 1424268980};
+	int Arr[] {1159126505, -1632621729, 1433925857, 84353895, 2001100545, 1548233367, -1585990364};
+	for (int i = 0; i < sizeof(Arr) / sizeof(*Arr); i++)
+		A.push_back(Arr[i]);
+}
+
+int main()
+{
+	Solution Test;
+	//vector <int>
+	Test.maxset();
+
+	cin.get();
+	return 0;
+}
