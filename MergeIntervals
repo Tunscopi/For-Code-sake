@@ -1,0 +1,87 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include "limits.h" // sort library
+#include "Windows.h""
+
+// ************ IN PROGRESS *****************
+using namespace std;
+
+struct Interval {
+	int start;
+	int end;
+	Interval() : start(0), end(0) {}
+	Interval(int s, int e) : start(s), end(e) {}
+};
+
+class Solution {
+
+public:
+	Solution::Solution(); // Constructor
+	vector<Interval> intervals;
+	vector<Interval> merged_Vec;
+	int track_start; bool isStartFound, isInserted = FALSE;
+
+	vector<Interval> Solution::insert(Interval newInterval) {
+	// merge intervals
+		Interval temp;
+		for (int i = 0; i < intervals.size(); i++)
+		{
+			if (!isStartFound && !isInserted){ // search for start
+				if (newInterval.start > intervals[i].start)
+				{
+					track_start = i; isStartFound = TRUE;
+					if (newInterval.end < intervals[i].end) {// complete overlap, merge nothing
+						merged_Vec.push_back(intervals[i]);
+					}
+					else if (newInterval.end < intervals[i + 1].start){
+						temp.start = intervals[track_start].start;
+					}
+				}
+			}
+			else if (!isInserted) { // search for end
+				if (newInterval.end < intervals[i].start){ // found end
+					temp.end = intervals[i].end; isInserted = TRUE;
+					merged_Vec.push_back(temp);
+				}
+			}
+			else{ // manually insert the rest of intervals
+				merged_Vec.push_back(intervals[i]);
+			}
+		}
+
+	// sort intervals (Probably sorted already)
+
+		return merged_Vec;
+	}
+};
+
+Solution::Solution()
+{
+	//int Arr[] {6, 12, 9, 1, 2, 7};
+	//int Arr[] {5,1,3,2,4};
+	//int Arr[] {6, 17, 15, 13};
+	//int intervals[] {19};
+	for (int i = 0; i < sizeof(intervals) / sizeof(intervals); i++)
+		intervals.push_back(intervals[i]);
+}
+
+vector<unsigned char> intToBytes(int paramInt)
+{
+	vector<unsigned char> arrayOfByte(8);
+	for (int i = 0; i < 8; i++)
+		arrayOfByte[8 - i] = (paramInt >> (i * 8));
+	return arrayOfByte;
+}
+
+int main()
+{
+	for (int i = 0; i < 8; i++)
+	intToBytes(i);
+	Solution Test;
+	//vector <int>
+	Test.insert();
+
+	cin.get();
+	return 0;
+}
