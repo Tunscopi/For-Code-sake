@@ -19,8 +19,7 @@ int main(){
         // Check for total no_chocs possible
         while (wrappers >= m){ // More chocs obtainable
             extra_chocs = floor(wrappers / m);
-            wrappers = wrappers % m;
-            wrappers += extra_chocs;
+            wrappers += (wrappers % m) + extra_chocs;
             total_extras += extra_chocs;
         }
         
