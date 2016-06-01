@@ -1,0 +1,19 @@
+int main(){
+    int n, result = 0, diag1 =0, diag2 = 0;
+    cin >> n;
+    vector< vector<int> > a(n,vector<int>(n));
+    for(int a_i = 0;a_i < n;a_i++){
+       for(int a_j = 0;a_j < n;a_j++){
+          cin >> a[a_i][a_j];
+       }
+    }
+    
+    
+    // Compute diagonal sums
+    for (int i = 0; i < n; i++){
+        diag1 += a[i][i];
+        diag2 += a[i][n-(i+1)];
+    }
+    
+    cout << abs(diag1-diag2) ;
+}
