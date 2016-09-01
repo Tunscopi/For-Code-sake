@@ -1,0 +1,37 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int m, n, k, q;
+    cin >> n >> k >> q;
+    int numArray[n];
+    int actualTurns = k%n;
+    
+    // Read-in integers
+    for (int i = 0; i < n; i++) {
+        cin >> numArray[i];
+    }
+    
+    // Search for index, k times
+    for (int i = 0; i < q; i++) {
+        cin >> m;
+        
+        if (k % n == 0) {     // Perfect multiple of n
+            cout << numArray[m] << "\n";
+        } else {
+        if (m >= actualTurns) {
+            cout << numArray[m-actualTurns] << "\n";            
+        } 
+        else {
+            cout << numArray[n-actualTurns+m] << "\n";}
+        }
+        
+    }
+    
+    return 0;
+}
