@@ -17,7 +17,7 @@ int main() {
         cin >> numArray[i];
     }
     
-    // Search for index, k times
+    // Search for index, q times
     for (int i = 0; i < q; i++) {
         cin >> m;
         
