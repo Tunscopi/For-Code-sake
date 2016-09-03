@@ -21,7 +21,7 @@ int main() {
     for (int i = 0; i < q; i++) {
         cin >> m;
         
-        if (k % n == 0) {     // Perfect multiple of n
+        if (actualTurns == 0) {     // Perfect multiple of n
             cout << numArray[m] << "\n";
         } else {
         if (m >= actualTurns) {
