@@ -4,29 +4,33 @@
 #include <fstream>
 using namespace std;
 
-int main(int argc, char* argv[])
+int main()
 {
-	int n,k,input,opposite;
+	int n,k,input,pair;
 	int result = 0;
-	
-	//ifstream reader;
-	//reader.open("input.txt");
+
 	cin >> n >> k;
 	
-	int remainders[n];
-	
-	// Read-in remainder values
+	int remainders[k];
+
+	// Initialise remainders to zero
+	for (int i=0; i<k; i++) {
+		remainders[i] = 0;
+	}	
+
+	// Keep count of no. of occurences of remainder values
 	for (int i=0; i<n; i++) {
 		cin >> input;
-		remainders[i] = input%k;
+		remainders[input%k]++; 
 	}
-
+	
 	for (int i=0; i*2<=k; i++) {
-		opposite = (k-i)%k;
-		if (i == opposite)	
+		pair = (k-i)%k;
+		if (i == pair)	
 			result += min(remainders[i], 1);
+			//result++;
 		else
-			result += max(remainders[i], remainders[opposite]);
+			result += max(remainders[i], remainders[pair]);
 	}
 
 	cout << result;
