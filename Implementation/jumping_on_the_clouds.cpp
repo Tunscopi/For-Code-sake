@@ -17,15 +17,10 @@ int main() {
 	}
 
 	while (i < no_clouds-1) {
-		if (i < no_clouds-2 && clouds[i+2] == available) {
-			i+=2;
-		} else {
-			i++;
-		}
+		i += (clouds[i+2] == available) + 1;
 		no_jumps++;
 	}
 	cout << no_jumps;
 
-	cout << "\n";
 	return 0;
 }
