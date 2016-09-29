@@ -4,14 +4,15 @@
 using namespace std;
 
 int main() {
-    int n,k,b_charge,fair_charge  = 0;
-    float sum = 0.0;
+    int n,k,fair_charge  = 0;
+    double sum, b_charge = 0.0;
     cin >> n >> k;
     float amounts[n];
 
         for (int i=0; i<n; i++) {
             cin >> amounts[i];
-            i==k ? :sum += amounts[i]/2;
+            if (i!=k)
+                sum += amounts[i]/2;
         } 
 
         cin >> b_charge;
