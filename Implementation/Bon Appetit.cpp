@@ -4,25 +4,18 @@
 using namespace std;
 
 int main() {
-    int n,k,b_charge,sum,fair_charge  = 0;
+    int n,k,b_charge,fair_charge  = 0;
+    float sum = 0.0;
     cin >> n >> k;
-    int amounts[n];
+    float amounts[n];
 
-    // Check if overcharged
-    // Read-in amounts 
         for (int i=0; i<n; i++) {
             cin >> amounts[i];
-            sum += amounts[i];
+            i==k ? :sum += amounts[i]/2;
         } 
 
-        fair_charge = 0.5*(sum - amounts[k]);        
-        
         cin >> b_charge;
-        if (b_charge > fair_charge)  // overcharged 
-            cout << b_charge - fair_charge << "\n";    
-        else 
-            cout << "Bon Appetit" << "\n"; 
-        
+        b_charge > fair_charge ? cout << b_charge - sum : cout << "Bon Appetit";
 
     cout << "\n";
     return 0;
