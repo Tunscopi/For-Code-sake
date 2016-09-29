@@ -15,7 +15,7 @@ int main() {
         } 
 
         cin >> b_charge;
-        b_charge > fair_charge ? cout << b_charge - sum : cout << "Bon Appetit";
+        b_charge > sum ? cout << b_charge - sum : cout << "Bon Appetit";
 
     cout << "\n";
     return 0;
