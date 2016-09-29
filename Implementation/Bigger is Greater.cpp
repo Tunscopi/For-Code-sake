@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <algorithm>
 using namespace std;
@@ -11,6 +12,8 @@ int main() {
 	bool isPivot = 0;
 	string word_;
 	cin >> no_tests;
+        fstream outfile;
+        outfile.open("outfile.txt");
 
         while (i < no_tests) {
 		cin >> word_;
@@ -43,17 +46,18 @@ int main() {
 
                                 }
                             }
-                            cout << word_;
+                            outfile << word_;
 		            isPivot = 0;
                         } else 
-		             cout << "no answer";
+		             outfile << "no answer";
 
 		} else 
-			cout << word_;
-		cout << "\n";
+		             outfile << "no answer";
+		outfile << "\n";
                 i++;
 	}
 
-	cout << "\n";
+        outfile.close();
+	//cout << "\n";
 	return 0;
 }
