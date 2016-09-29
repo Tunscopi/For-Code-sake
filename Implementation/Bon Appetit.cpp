@@ -11,8 +11,7 @@ int main() {
 
         for (int i=0; i<n; i++) {
             cin >> amounts[i];
-            if (i!=k)
-                sum += amounts[i]/2;
+            i==k? :sum += amounts[i]/2;
         } 
 
         cin >> b_charge;
