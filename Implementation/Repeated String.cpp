@@ -4,11 +4,12 @@
 using namespace std;
 
 int main() {
-    int n, a_count=0, result;
+    int a_count=0;
+    unsigned long int n, result;
     string s;    
     cin >> s >> n;
 
-    if (s.length() == 1) 
+    if (s.length() == 1 && s=="a") 
         cout << n;    
     else {    
         // Count no. of a's in single word occurence
