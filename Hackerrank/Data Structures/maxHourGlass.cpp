@@ -4,10 +4,10 @@ using namespace std;
 int main() {
     const int dimension = 6;
     int arr[dimension][dimension];
-    int count = 0, largestSum = 0, currSum = 0;
+    int count = 0, currSum = 0;
+    int largestSum = -10000000; // in an attempt to catch negative sums
 
     // Read-in values
-    
     for (int i=0; i<dimension; i++) {
         for (int j=0; j<dimension; j++) {
             cin >> arr[i][j];
