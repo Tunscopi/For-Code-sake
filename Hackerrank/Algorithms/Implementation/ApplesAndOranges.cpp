@@ -19,9 +19,10 @@ int main() {
 
     // Does it fall on House?
     for (int i=0;i<m;i++)
-        if (applesDist[i] + a >= s) no_applesHouse++;
-    for (int i=0;i<m;i++)
-        if (b - orangesDist[i] <= t) no_orangesHouse++; 
+        if (applesDist[i]+a >= s && applesDist[i]+a <= t) no_applesHouse++;
+    for (int i=0;i<n;i++)
+        if (b+orangesDist[i] <= t && b+orangesDist[i] >= s) no_orangesHouse++; 
+    
 
     cout << no_applesHouse << endl << no_orangesHouse << endl;
 
