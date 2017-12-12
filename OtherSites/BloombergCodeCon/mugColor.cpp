@@ -34,7 +34,7 @@ int main() {
     
     // print out correct unique mug color
     for (int i=0; i<numColors; i++) {
-        if (wrongColors.find(allColors[i]) == wrongColors.end()) {
+        if (wrongColors.find(allColors[i]) == wrongColors.end()) {   // item not found in wrongColors set
             cout << allColors[i];
             break;
         } 
