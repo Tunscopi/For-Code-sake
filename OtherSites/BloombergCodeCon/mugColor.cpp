@@ -35,13 +35,10 @@ int main() {
     for (int i=0; i<5; i++) {
         set<string>::iterator it = wrongColors.find(allColors[i]);
         
-        if (it != wrongColors.end()) {
+        if (it == wrongColors.end()) {
+            cout << allColors[i];
+            break;
         } 
-        else 
-        {
-           cout << allColors[i];
-           break;
-        }
     }
     
     return 0;
