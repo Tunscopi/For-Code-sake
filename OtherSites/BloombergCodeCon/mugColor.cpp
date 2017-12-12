@@ -15,11 +15,12 @@ using namespace std;
 
 int main() {
     int N;
+    const int numColors = 5;
     cin >> N;
     
     string color;
     set<string> wrongColors;
-    string allColors[5] = {"White", "Black", "Blue", "Red", "Yellow"};
+    string allColors[numColors] = {"White", "Black", "Blue", "Red", "Yellow"};
 
     
     for (int i=0; i<N; i++) {
@@ -32,7 +33,7 @@ int main() {
     // }
     
     // print out correct unique mug color
-    for (int i=0; i<5; i++) {
+    for (int i=0; i<numColors; i++) {
         if (wrongColors.find(allColors[i]) == wrongColors.end()) {
             cout << allColors[i];
             break;
